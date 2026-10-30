@@ -1,0 +1,92 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+
+body {
+    width: 60vw;
+    margin-right: 40vw;
+    box-sizing: border-box;
+cursor: url("./Images/cursor.png") 0 0, auto !important;
+}
+
+
+div {
+    font-family:"Playfair Display", serif;
+    }
+
+body {
+    background-color: #bae2e1;
+    color: #4f453f;
+    padding: 30px;
+
+    font-family: "Playfair Display", serif;
+    font-weight: 300;
+    list-style: none;
+    text-align: center;
+}
+
+h1 {font-weight: 100;
+    font-size: 4.5rem;
+    margin-top: 10px;
+    line-height: 1em;
+}
+
+
+h2 {font-family: Arial, Helvetica, sans-serif;
+    font-weight: 800;
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+    margin-top: 80px;
+    text-transform: ;
+    letter-spacing: 0;
+}
+
+h3:hover {
+  color: rgb(1, 59, 44);
+}
+
+h3 {
+    font-weight: 800;
+    font-size: 2rem;
+    margin-bottom: 0px;
+    margin-top: 0px;
+}
+
+li {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1rem;
+    line-height: 1.5;
+    padding: 10px 0;
+    border-bottom: none;
+    border-top: 1.5px solid #4f453f;
+    list-style-type: none;
+}
+
+li:last-child {
+    border-bottom: 1.5px solid #4f453f;
+}
+ul {padding-left: 0;}
+
+.tag {
+    position: relative;
+}
+
+
+h3:hover + .hover-bild {
+    display: block;
+}
+
+.hover-bild {
+    display: none;
+    position: fixed;
+    top: 50%;
+    right: 0;
+    left: auto;
+    transform: translateY(-50%);
+
+    width: 40vw;
+    height: 60vh;
+    object-fit: cover;
+    object-position: center;
+
+    z-index: 100;
+    pointer-events: none;
+}

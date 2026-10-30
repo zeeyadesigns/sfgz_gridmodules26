@@ -1,0 +1,41 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+
+
+body{
+    margin: 100px;
+background-color: darkkhaki;
+cursor: url("./Images/cursorheart.png"), auto;
+}
+
+
+h1{
+    color: rgb(1, 68, 16);
+    font-family:   font-family: "Playfair Display", serif;
+    padding: 10px;
+    margin-top: 20px;
+}
+
+h2{
+    margin-top: 30px;
+    margin-bottom: 2px;
+}
+
+p {font-family: Arial, Helvetica, sans-serif;
+}
+
+div{
+background-color: antiquewhite;
+    color: black;
+    padding: 40px;
+    margin-top: 10px;
+}
+
+.important {
+
+width: fit-content;
+box-sizing: border-box;
+background-color: rgb(1, 68, 16);
+color: antiquewhite;
+font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+padding: 10px;
+}

@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Abend-SkinCare</h1>
+
+    <h2>Montag</h2>
+    <h3>Gegen Mitesser &amp; Pickel</h3>
+
+    <img class="hover-bild" src="./Images/Reinigung.jpg" alt="Reinigung">
+
+    <ul>
+        <li>Reinigung</li>
+        <li>BHA-Peeling (Junglück oder TO 2 %)</li>
+        <li>Niacinamide</li>
+        <li>Buffet + Copper Peptides</li>
+        <li>Hyaluroncreme oder Squalane</li>
+    </ul>
+
+    <h2>Dienstag</h2>
+    <h3>Pflege/Erholung</h3>
+
+    <img class="hover-bild" src="./Images/Hyaluronic.jpg" alt="Hyaluronic Acid">
+
+    <ul>
+        <li>Reinigung</li>
+        <li>Rosenwasser</li>
+        <li>Hyaluronic Acid 2 % + B5</li>
+        <li>Niacinamide</li>
+        <li>Reichhaltige Creme</li>
+    </ul>
+
+    <h2>Mittwoch</h2>
+    <h3>Retinol</h3>
+
+    <ul>
+        <li>Reinigung</li>
+        <li>Retinol 0,2 % in Squalane</li>
+        <li>Optional: Wenn die Haut trocken wirkt, danach Niacinamide dünn auftragen</li>
+        <li>Creme</li>
+    </ul>
+
+    <h2>Donnerstag</h2>
+    <h3>Enzympeeling + Selbstbräuner</h3>
+
+    <ul>
+        <li>Reinigung</li>
+        <li>Enzympeeling (sanft, Haut glätten, abwaschen)</li>
+        <li>Hyaluronics (HA oder Marine)</li>
+        <li>Niacinamide</li>
+        <li>Leichte Creme</li>
+        <li>Selbstbräuner</li>
+    </ul>
+
+    <h2>Freitag</h2>
+    <h3>Pflege/Erholung</h3>
+
+    <ul>
+        <li>Reinigung</li>
+        <li>Rosenwasser</li>
+        <li>Hyaluronics</li>
+        <li>Niacinamide</li>
+        <li>Reichhaltige Pflege (Creme oder Squalane)</li>
+    </ul>
+
+    <h2>Samstag</h2>
+    <h3>Repair oder 1× pro Monat starkes Peeling</h3>
+
+    <ul>
+        <li>Reinigung</li>
+        <li>Hyaluronics</li>
+        <li>Niacinamide</li>
+        <li>Buffet + Copper Peptides</li>
+        <li>Creme</li>
+        <li>Resveratrol + Ferulic</li>
+    </ul>
+
+    <strong>1× pro Monat, z. B. am ersten Samstag</strong>
+
+    <ul>
+        <li>Reinigung</li>
+        <li>AHA 30 % + BHA 2 % Peeling Solution (10 Minuten, danach abwaschen)</li>
+        <li>Hyaluronics</li>
+        <li>Niacinamide</li>
+        <li>Reichhaltige Creme</li>
+    </ul>
+
+    <h2>Sonntag</h2>
+    <h3>Selfcare-Tag</h3>
+
+    <ul>
+        <li>Reinigung</li>
+        <li>Clarins Comfort Scrub oder Lancôme Rose Sugar Scrub</li>
+        <li>Maske (Feuchtigkeit/Repair)</li>
+        <li>Hyaluronic Acid + B5</li>
+        <li>Niacinamide</li>
+        <li>Squalane oder reichhaltige Creme</li>
+        <li>Pycnogenol</li>
+    </ul>
+
+    <script>
+        const bilder = document.querySelectorAll(".hover-bild");
+        const dienstag = document.querySelectorAll("h2")[1];
+
+        function bildWechseln() {
+            const dienstagErreicht =
+                dienstag.getBoundingClientRect().top < window.innerHeight / 2;
+
+            bilder[0].classList.toggle("is-active", !dienstagErreicht);
+            bilder[1].classList.toggle("is-active", dienstagErreicht);
+        }
+
+        window.addEventListener("scroll", bildWechseln);
+        bildWechseln();
+    </script>
+</body>
+</html>

@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Masonry-Bildergalerie mit Flexbox</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background: #f1f0eb;
+      color: #242424;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    main {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 48px 24px;
+    }
+
+    h1 {
+      margin: 0 0 12px;
+      font-size: clamp(32px, 5vw, 60px);
+      letter-spacing: -0.04em;
+    }
+
+    .intro {
+      margin: 0 0 32px;
+      color: #666;
+      line-height: 1.6;
+    }
+
+    /* Flexbox ordnet die Spalten nebeneinander an. */
+    .galerie {
+      display: flex;
+      align-items: flex-start;
+      gap: 20px;
+    }
+
+    /* Jede Spalte stapelt ihre Bilder unabhängig. */
+    .spalte {
+      display: flex;
+      flex-direction: column;
+      flex: 1 1 0;
+      gap: 20px;
+      min-width: 0;
+    }
+
+    .bild {
+      margin: 0;
+      overflow: hidden;
+      border-radius: 14px;
+      background: #ddd;
+    }
+
+    /* Die natürliche Bildhöhe bleibt erhalten. */
+    .bild img {
+      display: block;
+      width: 100%;
+      height: auto;
+      transition: transform 0.4s ease;
+    }
+
+    .bild:hover img {
+      transform: scale(1.04);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .bild img {
+        transition: none;
+      }
+    }
+
+    @media (max-width: 600px) {
+      main {
+        padding: 32px 16px;
+      }
+
+      .galerie,
+      .spalte {
+        gap: 14px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <main>
+    <h1>Bildergalerie</h1>
+
+    <p class="intro">
+      Unterschiedliche Bildformate in einem Masonry-Layout mit Flexbox.
+    </p>
+
+    <div class="galerie" id="galerie"></div>
+  </main>
+
+  <script>
+    /*
+      Hier deine eigenen Bilder eintragen.
+      Beispiel: src: "bilder/mein-foto.jpg"
+
+      width und height entsprechen den Abmessungen des Bildes.
+      Damit reserviert der Browser schon vor dem Laden den Platz.
+    */
+    const bilder = [
+      {
+        src: "https://picsum.photos/id/1015/800/1100",
+        alt: "Landschaft mit Fluss und Bergen",
+        width: 800,
+        height: 1100
+      },
+      {
+        src: "https://picsum.photos/id/1016/800/600",
+        alt: "Berglandschaft",
+        width: 800,
+        height: 600
+      },
+      {
+        src: "https://picsum.photos/id/1025/800/950",
+        alt: "Hund",
+        width: 800,
+        height: 950
+      },
+      {
+        src: "https://picsum.photos/id/1029/800/650",
+        alt: "Naturaufnahme",
+        width: 800,
+        height: 650
+      },
+      {
+        src: "https://picsum.photos/id/1035/800/1200",
+        alt: "Landschaft im Hochformat",
+        width: 800,
+        height: 1200
+      },
+      {
+        src: "https://picsum.photos/id/1039/800/800",
+        alt: "Natur im quadratischen Format",
+        width: 800,
+        height: 800
+      },
+      {
+        src: "https://picsum.photos/id/1040/800/1000",
+        alt: "Landschaftsaufnahme",
+        width: 800,
+        height: 1000
+      },
+      {
+        src: "https://picsum.photos/id/1043/800/550",
+        alt: "Landschaft im Querformat",
+        width: 800,
+        height: 550
+      },
+      {
+        src: "https://picsum.photos/id/1050/800/1050",
+        alt: "Küstenlandschaft",
+        width: 800,
+        height: 1050
+      }
+    ];
+
+    const galerie = document.querySelector("#galerie");
+    let bisherigeSpaltenzahl = 0;
+
+    function galerieAufbauen() {
+      const spaltenzahl =
+        window.innerWidth <= 600 ? 1 :
+        window.innerWidth <= 1000 ? 2 : 3;
+
+      if (spaltenzahl === bisherigeSpaltenzahl) return;
+      bisherigeSpaltenzahl = spaltenzahl;
+
+      galerie.replaceChildren();
+
+      const spalten = [];
+      const hoehen = Array(spaltenzahl).fill(0);
+      const abstand = window.innerWidth <= 600 ? 14 : 20;
+
+      const spaltenbreite =
+        (galerie.clientWidth - abstand * (spaltenzahl - 1))
+        / spaltenzahl;
+
+      for (let i = 0; i < spaltenzahl; i++) {
+        const spalte = document.createElement("div");
+        spalte.className = "spalte";
+
+        galerie.appendChild(spalte);
+        spalten.push(spalte);
+      }
+
+      bilder.forEach((bild) => {
+        // Das nächste Bild kommt in die bisher kürzeste Spalte.
+        const index = hoehen.indexOf(Math.min(...hoehen));
+
+        const rahmen = document.createElement("figure");
+        rahmen.className = "bild";
+
+        const img = document.createElement("img");
+        img.src = bild.src;
+        img.alt = bild.alt;
+        img.width = bild.width;
+        img.height = bild.height;
+        img.loading = "lazy";
+        img.decoding = "async";
+
+        rahmen.appendChild(img);
+        spalten[index].appendChild(rahmen);
+
+        hoehen[index] +=
+          spaltenbreite * (bild.height / bild.width) + abstand;
+      });
+    }
+
+    galerieAufbauen();
+    window.addEventListener("resize", galerieAufbauen);
+  </script>
+</body>
+
+</html>

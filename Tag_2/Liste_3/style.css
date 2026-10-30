@@ -1,0 +1,114 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&display=swap');
+
+:root {
+  --background: #191942;
+  --text: #f2e9e5;
+  --accent: #ed8888;
+  --line: #ed8888;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  background: var(--background);
+}
+
+body {
+  width: 60%;
+  min-height: 100vh;
+  margin: 0 0 0 40%;
+  padding: 50px clamp(24px, 5vw, 80px);
+  background: var(--background);
+  color: var(--text);
+  font-family: "DM Sans", sans-serif;
+  font-weight: 400;
+  text-align: left;
+  cursor: url("./Images/cursor.png") 0 0, auto;
+}
+
+h1 {
+  max-width: 850px;
+  margin: 0 0 70px;
+  color: var(--accent);
+  font-size: clamp(3.5rem, 7vw, 7rem);
+  font-weight: 500;
+  line-height: 0.95;
+  letter-spacing: -0.07em;
+}
+
+h2 {
+  margin: 60px 0 20px;
+  color: var(--accent);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+h3 {
+  margin: 0 0 18px;
+  font-size: clamp(1.4rem, 2.3vw, 2.4rem);
+  font-weight: 400;
+  line-height: 1.15;
+  letter-spacing: -0.04em;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+li {
+  padding: 18px 0;
+  border-top: 1px solid var(--line);
+  line-height: 1.5;
+}
+
+li:last-child {
+  border-bottom: 1px solid var(--line);
+}
+
+strong {
+  display: block;
+  margin: 35px 0 18px;
+  color: var(--accent);
+}
+
+/* Bilder links auf Höhe ihrer Stelle im HTML.
+   Sie scrollen ganz normal mit der Seite mit. */
+.hover-bild {
+  display: block;
+  position: absolute;
+  left: 5vw;
+  width: 30vw;
+  height: 40vh;
+  object-fit: cover;
+  object-position: center;
+}
+
+/* Auf schmalen Bildschirmen stehen die Bilder beim Text */
+@media (max-width: 800px) {
+  body {
+    width: 100%;
+    margin: 0;
+    padding: 30px 22px 60px;
+  }
+
+  h1 {
+    margin-bottom: 55px;
+  }
+
+  h2 {
+    margin-top: 45px;
+  }
+
+  .hover-bild {
+    position: static;
+    width: 100%;
+    height: 260px;
+    margin: 0 0 16px;
+  }
+}

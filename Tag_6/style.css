@@ -1,0 +1,100 @@
+@import url('https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght,YOPQ@100..900,300&display=swap');
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: rgb(167, 253, 226);
+}
+
+section {
+  container-type: size;
+  height: 100vh;
+  padding: 50px;
+}
+
+h1 {
+  display: grid;
+  grid-template-rows: repeat(2, minmax(0, 1fr));
+  height: 100%;
+  margin: 0;
+
+  font-family: "Kumbh Sans", sans-serif;
+  font-size: min(35vw, 46svh);
+  font-weight: 300;
+  font-style: normal;
+  font-variation-settings: "YOPQ" 300;
+  line-height: 1;
+  color: rgb(249, 193, 129);
+}
+
+.word {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  /*justify-content: space-between;*/
+  align-items: center;
+  min-height: center;
+ /* width: 100%;*/
+}
+
+.word > span {
+  display: block;
+  width: 100%;
+  font-weight: 300;
+  transition:  font-weight 600ms ease-in-out;
+  /*background-color: aquamarine;*/
+  transform-origin: center;
+  text-align: center;
+}
+
+
+.word > span:nth-child(1) {
+  transition-delay: 0ms;
+}
+
+.word > span:nth-child(2) {
+  transition-delay: 300ms;
+}
+
+.word > span:nth-child(3) {
+  transition-delay: 600ms;
+}
+
+.word:hover > span {
+  font-weight: 900;
+}
+
+.word:hover > span {
+  animation: links 3s ease-in-out both;
+}
+
+.word:hover > span:nth-child(2) {
+  animation-name: mitte;
+}
+
+.word:hover > span:nth-child(3) {
+  animation-name: rechts;
+}
+
+@keyframes links {
+  0%, 100% { font-weight: 300; }
+  20%, 80% { font-weight: 900; }
+}
+
+@keyframes mitte {
+  0%, 10% { font-weight: 300; }
+  30%, 70% { font-weight: 900; }
+  90%, 100% { font-weight: 300; }
+}
+
+@keyframes rechts {
+  0%, 20% { font-weight: 300; }
+  40%, 60% { font-weight: 900; }
+  80%, 100% { font-weight: 300; }
+}
+
+.word:hover > span {
+  animation: links 3s ease-in-out infinite;
+}

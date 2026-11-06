@@ -1,0 +1,70 @@
+@import url('https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght,YOPQ@100..900,300&display=swap');
+
+body{
+
+font-family: "Kumbh Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+}
+
+.FirstSentence{
+    animation-name: FirstSentence;
+    animation-duration: 5s;
+    animation-delay: 0.5s;
+    animation-iteration-count: infinite;
+    animation-fill-mode: both;
+    font-size: 8rem;
+    font-weight: 400;
+}
+
+.SecondSentence{
+    animation-name: SecondSentence;
+    font-size: 20rem;
+    font-weight: 800;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+    animation-delay: 3s;
+        animation-fill-mode: both;
+
+}
+@keyframes FirstSentence {
+    0%{
+        transform: translate(-100vw,0);
+        opacity: 1;
+    }
+
+    40%{
+        transform: translate(0,0);
+    }
+
+    60%{
+        transform: translate(0,0);
+    }
+
+    100%{
+        transform: translate(100vw,0);
+        opacity: 100;
+        rotate: ;
+    }
+
+}
+
+@keyframes SecondSentence {
+    0%{
+        transform: translate(100vw,0);
+    }
+
+  40%{
+        transform: translate(0,0);
+    }
+
+    60%{
+        transform: translate(0,0);
+    }
+
+
+    100%{
+        transform: translate(0,0);
+        
+    }
+}

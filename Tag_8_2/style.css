@@ -1,0 +1,36 @@
+/* Der Satz bleibt versteckt, bis der Button geklickt wird. */
+#wartet {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: calc(100% - 32px);
+  margin: 0;
+  transform: translate(-50%, -50%);
+  font-size: clamp(2rem, 6vw, 4rem);
+  text-align: center;
+}
+
+#wartet[hidden] {
+  display: none;
+}
+
+/* Der Button wird langsam grösser. */
+#knopf {
+  animation: atmen 3s ease-in-out infinite;
+}
+
+#knopf.umgezogen {
+  position: fixed;
+  z-index: 10;
+}
+
+@keyframes atmen {
+  0%, 100% { transform: scale(1); }
+  50%      { transform: scale(1.1); }
+}
+
+@keyframes schütteln {
+  0%, 100% { transform: translateX(0); }
+  25%      { transform: translateX(-3px); }
+  75%      { transform: translateX(3px); }
+}
